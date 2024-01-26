@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "groupes",
+  "info": {
+    "singularName": "groupe",
+    "pluralName": "groupes",
+    "displayName": "Création Groupe",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Banniere": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Titre": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Titre_contenu": {
+      "type": "string"
+    },
+    "Description_contenu": {
+      "type": "text"
+    },
+    "chapitres": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::chapitre.chapitre",
+      "mappedBy": "creation_groupe"
+    },
+    "Proprietaire": {
+      "type": "string"
+    },
+    "Payant": {
+      "type": "boolean"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categorie.categorie",
+      "mappedBy": "creation_groupe"
+    }
+  }
+}

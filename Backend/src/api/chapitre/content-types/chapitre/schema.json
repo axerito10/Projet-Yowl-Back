@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chapitres",
+  "info": {
+    "singularName": "chapitre",
+    "pluralName": "chapitres",
+    "displayName": "Chapitre"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titre": {
+      "type": "string"
+    },
+    "Contenu": {
+      "type": "string"
+    },
+    "creation_groupe": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::groupe.groupe",
+      "inversedBy": "chapitres"
+    }
+  }
+}

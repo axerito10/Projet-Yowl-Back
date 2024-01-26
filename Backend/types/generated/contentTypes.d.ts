@@ -362,6 +362,124 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategorieCategorie extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'categorie';
+    pluralName: 'categories';
+    displayName: 'categorie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.String;
+    creation_groupe: Attribute.Relation<
+      'api::categorie.categorie',
+      'manyToOne',
+      'api::groupe.groupe'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiChapitreChapitre extends Schema.CollectionType {
+  collectionName: 'chapitres';
+  info: {
+    singularName: 'chapitre';
+    pluralName: 'chapitres';
+    displayName: 'Chapitre';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titre: Attribute.String;
+    Contenu: Attribute.String;
+    creation_groupe: Attribute.Relation<
+      'api::chapitre.chapitre',
+      'manyToOne',
+      'api::groupe.groupe'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chapitre.chapitre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chapitre.chapitre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGroupeGroupe extends Schema.CollectionType {
+  collectionName: 'groupes';
+  info: {
+    singularName: 'groupe';
+    pluralName: 'groupes';
+    displayName: 'Cr\u00E9ation Groupe';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Banniere: Attribute.Media;
+    Titre: Attribute.String;
+    Description: Attribute.Text;
+    Titre_contenu: Attribute.String;
+    Description_contenu: Attribute.Text;
+    chapitres: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToMany',
+      'api::chapitre.chapitre'
+    >;
+    Proprietaire: Attribute.String;
+    Payant: Attribute.Boolean;
+    categories: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToMany',
+      'api::categorie.categorie'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTestTest extends Schema.CollectionType {
   collectionName: 'tests';
   info: {
@@ -731,6 +849,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     telephone: Attribute.BigInteger;
     prenom: Attribute.String;
     private: Attribute.Boolean;
+    Photo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -802,6 +921,9 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::categorie.categorie': ApiCategorieCategorie;
+      'api::chapitre.chapitre': ApiChapitreChapitre;
+      'api::groupe.groupe': ApiGroupeGroupe;
       'api::test.test': ApiTestTest;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
