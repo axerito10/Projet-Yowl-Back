@@ -462,6 +462,16 @@ export interface ApiGroupeGroupe extends Schema.CollectionType {
       'oneToMany',
       'api::categorie.categorie'
     >;
+    owner: Attribute.Relation<
+      'api::groupe.groupe',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    follower: Attribute.Relation<
+      'api::groupe.groupe',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -476,28 +486,6 @@ export interface ApiGroupeGroupe extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTestTest extends Schema.CollectionType {
-  collectionName: 'tests';
-  info: {
-    singularName: 'test';
-    pluralName: 'tests';
-    displayName: 'test';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    test: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -850,6 +838,21 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     prenom: Attribute.String;
     private: Attribute.Boolean;
     Photo: Attribute.Media;
+    mesGroupes: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::groupe.groupe'
+    >;
+    groupeFollow: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::groupe.groupe'
+    >;
+    groupeFavoris: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::groupe.groupe'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -924,7 +927,6 @@ declare module '@strapi/types' {
       'api::categorie.categorie': ApiCategorieCategorie;
       'api::chapitre.chapitre': ApiChapitreChapitre;
       'api::groupe.groupe': ApiGroupeGroupe;
-      'api::test.test': ApiTestTest;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
