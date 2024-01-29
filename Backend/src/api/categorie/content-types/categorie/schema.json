@@ -4,7 +4,8 @@
   "info": {
     "singularName": "categorie",
     "pluralName": "categories",
-    "displayName": "categorie"
+    "displayName": "categorie",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,11 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "category": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 10000000
     },
-    "creation_groupe": {
+    "creation_groupes": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::groupe.groupe",
       "inversedBy": "categories"
     }

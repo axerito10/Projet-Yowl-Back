@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Banniere": {
+    "image": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -49,9 +49,9 @@
     },
     "categories": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::categorie.categorie",
-      "mappedBy": "creation_groupe"
+      "mappedBy": "creation_groupes"
     }
   }
 }

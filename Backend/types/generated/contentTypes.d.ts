@@ -368,15 +368,19 @@ export interface ApiCategorieCategorie extends Schema.CollectionType {
     singularName: 'categorie';
     pluralName: 'categories';
     displayName: 'categorie';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    category: Attribute.String;
-    creation_groupe: Attribute.Relation<
+    category: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 10000000;
+      }>;
+    creation_groupes: Attribute.Relation<
       'api::categorie.categorie',
-      'manyToOne',
+      'manyToMany',
       'api::groupe.groupe'
     >;
     createdAt: Attribute.DateTime;
@@ -445,7 +449,7 @@ export interface ApiGroupeGroupe extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Banniere: Attribute.Media;
+    image: Attribute.Media;
     Titre: Attribute.String;
     Description: Attribute.Text;
     Titre_contenu: Attribute.String;
@@ -459,7 +463,7 @@ export interface ApiGroupeGroupe extends Schema.CollectionType {
     Payant: Attribute.Boolean;
     categories: Attribute.Relation<
       'api::groupe.groupe',
-      'oneToMany',
+      'manyToMany',
       'api::categorie.categorie'
     >;
     createdAt: Attribute.DateTime;
