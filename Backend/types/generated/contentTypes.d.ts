@@ -445,7 +445,7 @@ export interface ApiGroupeGroupe extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Banniere: Attribute.Media;
+    image: Attribute.Media;
     Titre: Attribute.String;
     Description: Attribute.Text;
     Titre_contenu: Attribute.String;
