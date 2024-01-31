@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "privates",
+  "info": {
+    "singularName": "private",
+    "pluralName": "privates",
+    "displayName": "Private",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "groupeFavoris": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::groupe.groupe"
+    },
+    "groupeFollow": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::groupe.groupe"
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

@@ -90,17 +90,6 @@
       "relation": "oneToMany",
       "target": "api::groupe.groupe",
       "mappedBy": "owner"
-    },
-    "groupeFollow": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::groupe.groupe",
-      "mappedBy": "follower"
-    },
-    "groupeFavoris": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::groupe.groupe"
     }
   }
 }
