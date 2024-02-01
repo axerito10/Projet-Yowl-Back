@@ -4,18 +4,19 @@
   "info": {
     "singularName": "chapitre",
     "pluralName": "chapitres",
-    "displayName": "Chapitre"
+    "displayName": "Chapitre",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Titre": {
+    "titre": {
       "type": "string"
     },
-    "Contenu": {
-      "type": "string"
+    "description": {
+      "type": "text"
     },
     "creation_groupe": {
       "type": "relation",
