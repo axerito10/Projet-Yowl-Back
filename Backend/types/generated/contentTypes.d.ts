@@ -362,174 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCategorieCategorie extends Schema.CollectionType {
-  collectionName: 'categories';
-  info: {
-    singularName: 'categorie';
-    pluralName: 'categories';
-    displayName: 'categorie';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    category: Attribute.String;
-    creation_groupe: Attribute.Relation<
-      'api::categorie.categorie',
-      'manyToOne',
-      'api::groupe.groupe'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::categorie.categorie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::categorie.categorie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiChapitreChapitre extends Schema.CollectionType {
-  collectionName: 'chapitres';
-  info: {
-    singularName: 'chapitre';
-    pluralName: 'chapitres';
-    displayName: 'Chapitre';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    titre: Attribute.String;
-    description: Attribute.Text;
-    creation_groupe: Attribute.Relation<
-      'api::chapitre.chapitre',
-      'manyToOne',
-      'api::groupe.groupe'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::chapitre.chapitre',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::chapitre.chapitre',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiGroupeGroupe extends Schema.CollectionType {
-  collectionName: 'groupes';
-  info: {
-    singularName: 'groupe';
-    pluralName: 'groupes';
-    displayName: 'Cr\u00E9ation Groupe';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    image: Attribute.Media;
-    Titre: Attribute.String;
-    Description: Attribute.Text;
-    Titre_contenu: Attribute.String;
-    Description_contenu: Attribute.Text;
-    chapitres: Attribute.Relation<
-      'api::groupe.groupe',
-      'oneToMany',
-      'api::chapitre.chapitre'
-    >;
-    Proprietaire: Attribute.String;
-    Payant: Attribute.Boolean;
-    categories: Attribute.Relation<
-      'api::groupe.groupe',
-      'oneToMany',
-      'api::categorie.categorie'
-    >;
-    owner: Attribute.Relation<
-      'api::groupe.groupe',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::groupe.groupe',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::groupe.groupe',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPrivatePrivate extends Schema.CollectionType {
-  collectionName: 'privates';
-  info: {
-    singularName: 'private';
-    pluralName: 'privates';
-    displayName: 'Private';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    groupeFavoris: Attribute.Relation<
-      'api::private.private',
-      'oneToMany',
-      'api::groupe.groupe'
-    >;
-    groupeFollow: Attribute.Relation<
-      'api::private.private',
-      'oneToMany',
-      'api::groupe.groupe'
-    >;
-    owner: Attribute.Relation<
-      'api::private.private',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::private.private',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::private.private',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -944,6 +776,209 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategorieCategorie extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'categorie';
+    pluralName: 'categories';
+    displayName: 'categorie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.String;
+    creation_groupe: Attribute.Relation<
+      'api::categorie.categorie',
+      'manyToOne',
+      'api::groupe.groupe'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiChapitreChapitre extends Schema.CollectionType {
+  collectionName: 'chapitres';
+  info: {
+    singularName: 'chapitre';
+    pluralName: 'chapitres';
+    displayName: 'Chapitre';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titre: Attribute.String;
+    description: Attribute.Text;
+    creation_groupe: Attribute.Relation<
+      'api::chapitre.chapitre',
+      'manyToOne',
+      'api::groupe.groupe'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chapitre.chapitre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chapitre.chapitre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGroupeGroupe extends Schema.CollectionType {
+  collectionName: 'groupes';
+  info: {
+    singularName: 'groupe';
+    pluralName: 'groupes';
+    displayName: 'Cr\u00E9ation Groupe';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    image: Attribute.Media;
+    Titre: Attribute.String;
+    Description: Attribute.Text;
+    Titre_contenu: Attribute.String;
+    Description_contenu: Attribute.Text;
+    chapitres: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToMany',
+      'api::chapitre.chapitre'
+    >;
+    Proprietaire: Attribute.String;
+    Payant: Attribute.Boolean;
+    categories: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToMany',
+      'api::categorie.categorie'
+    >;
+    owner: Attribute.Relation<
+      'api::groupe.groupe',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::groupe.groupe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMessagerieMessagerie extends Schema.CollectionType {
+  collectionName: 'messageries';
+  info: {
+    singularName: 'messagerie';
+    pluralName: 'messageries';
+    displayName: 'messagerie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    room: Attribute.String & Attribute.Unique;
+    between: Attribute.Relation<
+      'api::messagerie.messagerie',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::messagerie.messagerie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::messagerie.messagerie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPrivatePrivate extends Schema.CollectionType {
+  collectionName: 'privates';
+  info: {
+    singularName: 'private';
+    pluralName: 'privates';
+    displayName: 'Private';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    groupeFavoris: Attribute.Relation<
+      'api::private.private',
+      'oneToMany',
+      'api::groupe.groupe'
+    >;
+    groupeFollow: Attribute.Relation<
+      'api::private.private',
+      'oneToMany',
+      'api::groupe.groupe'
+    >;
+    owner: Attribute.Relation<
+      'api::private.private',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::private.private',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::private.private',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -954,10 +989,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::categorie.categorie': ApiCategorieCategorie;
-      'api::chapitre.chapitre': ApiChapitreChapitre;
-      'api::groupe.groupe': ApiGroupeGroupe;
-      'api::private.private': ApiPrivatePrivate;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -966,6 +997,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::categorie.categorie': ApiCategorieCategorie;
+      'api::chapitre.chapitre': ApiChapitreChapitre;
+      'api::groupe.groupe': ApiGroupeGroupe;
+      'api::messagerie.messagerie': ApiMessagerieMessagerie;
+      'api::private.private': ApiPrivatePrivate;
     }
   }
 }

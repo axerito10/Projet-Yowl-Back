@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "messageries",
+  "info": {
+    "singularName": "messagerie",
+    "pluralName": "messageries",
+    "displayName": "messagerie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "room": {
+      "type": "string",
+      "unique": true
+    },
+    "between": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
